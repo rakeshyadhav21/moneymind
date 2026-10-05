@@ -2,6 +2,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import React, { useState, useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { googleSignIn } from "./google";
+import { motion as Motion } from "framer-motion";
 
 const AuthForms = ({ initialForm = "signin-form"}) => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -210,7 +211,7 @@ const AuthForms = ({ initialForm = "signin-form"}) => {
 
   return (
     <div className="flex justify-center items-center my-12">
-      <motion.div
+      <Motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
@@ -374,7 +375,7 @@ const AuthForms = ({ initialForm = "signin-form"}) => {
               theme="outline"
               shape="rectangular"
               text="continue_with"
-              width="100%"
+              width="300"
             />
           </div>
           </form>
@@ -507,7 +508,7 @@ const AuthForms = ({ initialForm = "signin-form"}) => {
             )}
           </form>
         )}
-      </motion.div>
+      </Motion.div>
     </div>
   );
 };

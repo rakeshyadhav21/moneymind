@@ -10,6 +10,8 @@ const budgetRoutes = require("./src/routes/budget.route")
 const profileRoutes = require("./src/routes/profile.route")
 const goalsRoutes = require("./src/routes/goals.route")
 const ytRoutes = require("./src/routes/yt.route")
+const googleYoutubeRoutes = require("./src/routes/googleYoutube.route");
+
 
 const startServer = async () => {
 const app = await configureApp();
@@ -18,6 +20,9 @@ app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.path}`);
   next();
 });
+
+// Google YouTube OAuth routes
+app.use("/", googleYoutubeRoutes);
 
 app.get("/ping", (req, res) => {
   res.status(204).end(); 
@@ -74,7 +79,7 @@ app.get('/api/db', async (req, res) => {
 });
 
 
-
+app.get("/", (req,res) => res.send("API is Working"));
 app.use("/api",authRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/home",homeRoutes);

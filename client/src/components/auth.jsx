@@ -2,9 +2,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import React, { useState, useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { googleSignIn } from "./google";
-import { motion } from "framer-motion";
 
-const AuthForms = ({ initialForm = "signin-form", onClose }) => {
+const AuthForms = ({ initialForm = "signin-form"}) => {
   const API_URL = import.meta.env.VITE_API_URL;
   const [formType, setFormType] = useState(initialForm);
   const [email, setEmail] = useState("");
@@ -79,8 +78,6 @@ const AuthForms = ({ initialForm = "signin-form", onClose }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-
-      const data = await response.json();
 
       if (response.status === 400) {
         if (type === 'signup') {
@@ -297,7 +294,7 @@ const AuthForms = ({ initialForm = "signin-form", onClose }) => {
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
               onError={() => {
-                setErrors({ submit: "Google login failed. Please try again." });
+                setMessage("Google login failed. Please try again.");
               }}
               useOneTap
               theme="outline"
@@ -371,7 +368,7 @@ const AuthForms = ({ initialForm = "signin-form", onClose }) => {
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
               onError={() => {
-                setErrors({ submit: "Google login failed. Please try again." });
+                setMessage("Google login failed. Please try again.");
               }}
               useOneTap
               theme="outline"

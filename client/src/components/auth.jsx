@@ -303,7 +303,7 @@ const AuthForms = ({ initialForm = "signin-form", onClose }) => {
               theme="outline"
               shape="rectangular"
               text="continue_with"
-              width="100%"
+              width="300"
             />
           </div>
           </form>

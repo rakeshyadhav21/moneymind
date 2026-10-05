@@ -297,7 +297,6 @@ const AuthForms = ({ initialForm = "signin-form"}) => {
               onError={() => {
                 setMessage("Google login failed. Please try again.");
               }}
-              useOneTap
               theme="outline"
               shape="rectangular"
               text="continue_with"
